@@ -2,8 +2,13 @@ import React from 'react'
 import Player from '../Player'
 import Map from '../map/index'
 import {tiles } from '../../data/maps/1'
+import store from '../../Configure/store'
 
 function World(props) {
+    store.dispatch({ type: 'ADD_TILES', payload: {
+        tiles,
+    } })
+    
     return (
         <div
         style= {{
@@ -13,7 +18,7 @@ function World(props) {
             margin: '20px Auto',
         }}
         >
-        <Map tiles={tiles} />
+        <Map />
         <Player />
         </div>
     )

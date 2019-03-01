@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {SPRITE_SIZE} from '../../Configure/constant'
 
 import '../../Features/map/styles.css'
@@ -7,6 +8,10 @@ function getTileSprite(type){
     switch (type) {
         case 0 :
         return 'grass'
+        case 1 :
+        return 'chest'
+        case 3 :
+        return 'tree'
         case 5 :
         return 'rock'
         case 6 :
@@ -41,9 +46,8 @@ function Map(props) {
         <div
         style= {{
             width: '800px',
-            height: '400px',
-            backgroundColor: 'green',
-    
+            height: '530px',
+            backgroundColor: '#42b842',
             border: '4px solid white',
             margin: '10px Auto',
         }}
@@ -55,5 +59,10 @@ function Map(props) {
     )
 }
 
+function mapStateToProps(state) {
+    return {
+        tiles: state.map.tiles,
+    }
+}
 
-export default Map
+export default connect(mapStateToProps)(Map)
